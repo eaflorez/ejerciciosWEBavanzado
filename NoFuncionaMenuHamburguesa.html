@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+               <meta charset="utf-8">
+        <title>ERP - CARBOLSAS</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta content="ERP - CARBOLSAS" name="description">
+        <meta content="Simonky" name="author">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="https://carbolsas.co/erp/APP/assets/images/favicon.ico">
+
+        <!-- App css -->
+        <link href="NoFuncionaMenuHamburguesa_files/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="NoFuncionaMenuHamburguesa_files/icons.min.css" rel="stylesheet" type="text/css">
+        <link href="NoFuncionaMenuHamburguesa_files/theme.min.css" rel="stylesheet" type="text/css">
+
+                       <!-- Sweet Alerts css -->
+               <link href="NoFuncionaMenuHamburguesa_files/sweetalert2.min.css" rel="stylesheet" type="text/css">
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            <div class="main-content">
+
+                <header id="page-topbar">
+                    <div class="navbar-header">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box d-flex align-items-left">
+                            <div class="logo">
+                            
+                                <span>
+                                    <i class="fas fa-box-open"></i> <b> ERP CARBOLSAS - PRODUCCIÓN</b>
+                                </span>
+                            </div>
+                            <div class="logo btn btn-sm mr-2 font-size-16 d-lg-none header-item">
+                                <i class="fas fa-box-open"></i> <b> ERP CARBOLSAS | PRODUCCIÓN</b>
+                            </div>
+                            
+                        </div>
+        
+                        <div class="d-flex align-items-center">
+        
+                            <div class="dropdown d-inline-block ml-4">
+                                <button type="button" class="btn header-item waves-effect waves-light" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="rounded-circle header-profile-user" src="NoFuncionaMenuHamburguesa_files/avatar-2.jpg" alt="usuario">
+
+                                    <span class="d-none d-sm-inline-block ml-1">Nombre de Usuario</span>
+                                    <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
+                                        <span>Cerrar Sesión <i class="fas fa-sign-out-alt"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </header>              
+<form name="pedidoGen" method="post" action="frm_pedidogenerico.php">
+                
+                <div class="topnav">
+                    <div class="container-fluid">
+                        <nav class="navbar navbar-light navbar-expand-lg topnav-menu active">
+                            <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                <ul class="navbar-nav active">
+                                    <!-- todos los roles -->
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://carbolsas.co/erp/APP/index.php">
+                                            <i class="fas fa-home"></i> Panel de opciones
+                                        </a>
+                                    </li>
+                                    <!-- jefe de producción -->
+                                    <li>
+                                        <a class="nav-link" href="https://carbolsas.co/erp/APP/cb_erp_pedidoCustomBoard.php">
+                                            <i class="fas fa-folder-open"></i> Pedidos Personalizados
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- Supervisor de almacén-->
+                                    <li class="active">
+                                        <a class="nav-link active" href="https://carbolsas.co/erp/APP/cb_erp_pedidoGenerico.php">
+                                            <i class="fas fa-file-alt"></i> Nuevo Pedido Genérico
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- Supervisor de almacén / Jefe de producción--> 
+                                    <li>
+                                        <a class="nav-link" href="https://carbolsas.co/erp/APP/cb_erp_pedidoGenericoBoard.php">
+                                            <i class="fas fa-folder"></i> Pedidos Genéricos
+                                        </a>
+                                    </li>
+                                    
+                                    <!-- jefe de producción -->
+                                    <li>
+                                        <a class="nav-link" href="https://carbolsas.co/erp/APP/cp_erp_ordenProdBoard.php">
+                                            <i class="fas fa-clipboard"></i> Ordenes de Producción
+                                        </a>
+                                    </li>
+                                    
+                                    <!--  Supervisor de producción / Jefe de producción -->
+                                    <li>
+                                        <a class="nav-link" href="https://carbolsas.co/erp/APP/cp_erp_userBoard.php">
+                                            <i class="fas fa-user-tie"></i> Operarios
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>                
+                <!-- end topnav -->
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <div class="row"> <!-- start page title -->
+                            <div class="col-12">
+                                <!-- estado 0: hacer pedido genérico -->
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0 font-size-24">PEDIDO GENÉRICO:</h4>
+                                    <h4 class="mb-0 font-size-24 text-black-50"><i class="fas fa-plus"></i> NUEVO</h4>
+                                </div>
+                                
+                                <!-- estado 1: Borrador del pedido genérico 
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0 font-size-24">PEDIDO GENÉRICO:</h4>
+                                    <h4 class="mb-0 font-size-24 text-secondary"><i class="far fa-file"></i> BORRADOR</h4>
+                                </div>
+                                -->
+                                <!-- estado 2: Pedido genérico pendiente de revisión 
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0 font-size-24">PEDIDO GENÉRICO:</h4>
+                                    <h4 class="mb-0 font-size-24 text-info"><i class="fas fa-search"></i> PENDIENTE</h4>
+                                </div>
+                                -->
+                                <!-- estado 3: Pedido genérico en producción 
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0 font-size-24">PEDIDO GENÉRICO:</h4>
+                                    <h4 class="mb-0 font-size-24 text-dark"><i class="fas fa-cogs"></i> EN PRODUCCIÓN</h4>
+                                </div>
+                                -->
+                                <!-- estado 4: Pedido genérico en despacho 
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0 font-size-24">PEDIDO GENÉRICO:</h4>
+                                    <h4 class="mb-0 font-size-24 text-danger"><i class="fas fa-boxes"></i> EN DESPACHO</h4>
+                                </div>
+                                -->
+                                <!-- estado 5: Pedido genérico entregado 
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0 font-size-24">PEDIDO GENÉRICO:</h4>
+                                    <h4 class="mb-0 font-size-24 text-primary"><i class="fas fa-store"></i> ENTREGADO A ALMACÉN</h4>
+                                </div>
+                                -->
+                            </div>
+                        </div> <!-- end page title -->    
+
+                        <div class="row"> <!-- ayuda-->
+                            <div class="col-lg-12">
+                                <div id="accordion" class="custom-accordion mb-4">
+                                    <div class="card mb-0">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="m-0 font-size-15">
+                                                <a class="d-block pt-2 pb-2 text-dark" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">Cómo hacer pedido genérico <i class="far fa-question-circle"></i> <span class="float-right"><i class="mdi mdi-chevron-down accordion-arrow"></i></span>
+                                                </a>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <p class="card-subtitle mb-4 font-size-13">Indicaciones
+ generales de cómo hacer el pedido genérico. Lorem ipsum dolor sit amet 
+consectetur adipiscing elit egestas nibh feugiat, rutrum praesent vitae 
+parturient eros sagittis pellentesque dis. Enim ultrices tristique 
+pulvinar semper malesuada in, lacinia facilisis mollis aliquam dis 
+pharetra, orci integer proin vivamus condimentum. Cras dignissim mauris 
+in egestas aliquet id, euismod orci tristique nibh velit justo varius, 
+nec rhoncus parturient diam litora.</p>
+                                    </div>
+                                        </div>
+                                    </div> <!-- end card-->
+                                </div> <!-- end custom accordions-->
+                            </div> <!-- end col -->
+                        </div> <!-- end row  ayuda -->
+
+                        
+                                                <div class="row"> <!-- Info general del pedido genérico -->
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                            <div class="row"><!-- datos pedido genérico -->
+                                                <div class="col-md-4 mb-4">
+                                                    <h6 class="mb-2"><i class="fas fa-file-alt"></i> No. Pedido:</h6>
+                                                                                                        <h5 class="mb-2">G-253                                                    
+                                                    </h5>
+                                                </div> <!-- end col-->
+                                                <div class="col-md-4 mb-4">
+                                                    <h6 class="mb-2"><i class="fas fa-calendar-alt"></i> Fecha de pedido:</h6>
+                                                    <h5 class="mb-2" id="fechacambiar">04/02/2025</h5>
+                                                </div> <!-- end col-->
+                                                <div class="col-md-4 mb-4">
+                                                    <h6 class="mb-2"><i class="fas fa-user-tag"></i> Vendedor</h6>
+                                                    <h5 class="mb-2"> Edwin Flórez</h5>
+                                                </div> <!-- end col-->
+                                            </div> <!-- end row-->
+
+                                            <div class="row">  <!-- progres bar -->
+                                                <div class="col-md-12">
+                                                    <!-- estados 0: nuevo -->
+                                                    <div class="progress mb-2" style="height: 24px;" id="aqui">
+                                                    </div>
+
+                                                    <!-- estados 1: borrador 
+                                                    <div class="progress mb-2" style="height: 24px;">
+                                                        <div class="progress-bar bg-secondary" role="progressbar" style="width: 10%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">BORRADOR</div>
+                                                    </div>
+                                                    -->
+                                                    <!-- estado 2: pendiente 
+                                                    <div class="progress mb-2" style="height: 24px;">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">PENDIENTE</div>
+                                                    </div>
+                                                    -->
+                                                    <!-- estado 3 
+                                                    <div class="progress mb-2" style="height: 24px;">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">PENDIENTE</div>
+                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 50%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">EN PRODUCCIÓN [proceso]</div>
+                                                    </div>
+                                                    -->
+                                                    <!-- estado 4 
+                                                    <div class="progress mb-2" style="height: 24px;">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">PENDIENTE</div>
+                                                        <div class="progress-bar bg-dark" role="progressbar" style="width: 50%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">EN PRODUCCIÓN [proceso]</div>
+                                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">EN DESPACHO</div>
+                                                    </div>
+                                                    -->
+                                                    <!-- estado 5 
+                                                    <div class="progress mb-2" style="height: 24px;">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">ENTREGADO A ALMACÉN</div>
+                                                    </div>
+                                                    -->
+                                                </div>
+                                            </div> <!-- end row-->
+
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div> <!-- end row info general -->
+                                                <div class="row"> <!-- solicitar genéricos -->
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="card-title"><b>Solicitud de Referencia Genérica:</b></div>
+                            
+                                        <div class="row"> <!-- cantidad / referncia  material --> 
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inputQty">Cantidad</label>
+                                                    <input type="text" id="inputQty" name="fcantidad" placeholder="Ingrese la cantidad" class="form-control autonumber" data-a-sep="." data-a-dec="," required="">
+                                                </div>
+                                            </div> <!-- end col-->
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="inputRef">Referencia</label>
+                                                    <input type="text" id="inputRef" name="freferencia" placeholder="Ingrese la referencia" class="form-control autonumber" data-a-sep="" data-a-dec="," required="">
+                                                </div>
+                                            </div> <!-- end col-->
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="selectMaterial">Material</label>
+                                                    <select class="form-control" name="fmaterial" id="selectMaterial" required="">
+                                                        <option value="" selected="selected">Seleccione el material</option>
+                                                       <option value="0">Cliente suministra</option><option value="1">Blanco</option><option value="2">Kraft</option><option value="3">Earth Pack</option><option value="4">Came</option><option value="5">Corrugado</option><option value="6">Linner</option><option value="7">Óptima</option><option value="8">Microcorrugado - Microblanco</option><option value="9">Maule B/B</option><option value="10">Maule B/C</option><option value="11">Maule kit 12</option><option value="12">Maule kit 6</option><option value="13">Maule C/C</option><option value="14">Propalcote</option><option value="15">Propalpoly</option><option value="16">Manifold</option><option value="17">Metsa</option><option value="18">Bohui</option><option value="19">Spectra</option><option value="20">Eagle</option><option value="21">Chip/Kraft</option><option value="22">Microcorrugado - Micromarròn</option><option value="23">Bristol</option><option value="24">Manifold</option><option value="25">Natural</option><option value="26">Maule</option><option value="27">Bond</option><option value="28">Sulfito</option><option value="29">Sappi</option><option value="30">New Zealand</option><option value="31">Poplar</option><option value="32">Valdivia</option><option value="33">C/CM-M DUPLEX</option><option value="34">Zenith</option><option value="35">Optima KF</option><option value="36">Brigth FBB</option><option value="37">Esmerald B/C</option><option value="38">Grace proof</option>                                                       
+                                                        
+                                                        
+                                                    </select>
+                                                </div>
+                                            </div> <!-- end col-->
+                                            <div class="col-sm-6 col-md-3">
+                                                <div class="form-group">
+                                                    <label for="selectCaliber">Calibre</label>
+                                                    <input type="text" class="form-control" list="calibreOptions" id="selectCaliber" name="fcalibre" placeholder="escoja un calibre" required="">
+                                                                                                        <datalist id="calibreOptions">
+                                                                                                                <option value="40">
+                                                                                                                </option><option value="50">
+                                                                                                                </option><option value="75">
+                                                                                                                </option><option value="90">
+                                                                                                                </option><option value="115">
+                                                                                                                </option><option value="150">
+                                                                                                                </option><option value="160">
+                                                                                                                </option><option value="210">
+                                                                                                                </option><option value="220">
+                                                                                                                </option><option value="240">
+                                                                                                                </option><option value="250">
+                                                                                                                </option><option value="270">
+                                                                                                                </option><option value="278">
+                                                                                                                </option><option value="290">
+                                                                                                                </option><option value="300">
+                                                                                                                </option><option value="310">
+                                                                                                                </option><option value="320">
+                                                                                                                </option><option value="315">
+                                                                                                                </option><option value="430ek">
+                                                                                                                </option><option value="430eb">
+                                                                                                                </option><option value="b450kw">
+                                                                                                                </option></datalist>
+                                                  
+                                                </div>
+                                            </div> <!-- end col-->
+                                        </div> <!-- end row cantidad / referncia  material -->
+                                        
+                                        <div class="row"> <!-- impresión / descripción / botón -->
+                                            <div class="col-sm-6 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="selectImp">Impresión</label>
+                                                    <select class="form-control" name="fimpresion" id="selectImp" required="">
+                                                        <option value="" selected="selected">Seleccione una opción</option>
+                                                        <option value="Sí">Sí, con impresión</option>
+                                                        <option value="No">No, sin impresión</option>
+                                                    </select>
+                                                </div>
+                                            </div> <!-- end col-->
+                                            <div class="col-sm-6 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="selectImp">Plastificado</label>
+                                                    <select class="form-control" name="fplastificado" id="selectPlas" required="">
+                                                        <option value="" selected="selected">Seleccione una opción</option>
+                                                        <option value="Sí">Sí, con plastificado</option>
+                                                        <option value="No">No, sin plastificado</option>
+                                                    </select>
+                                                </div>
+                                            </div> <!-- end col-->
+                                            <div class="col-sm-6 col-md-4">
+                                                <div class="form-group">
+                                                    <label for="textareaObsGen">Descripción / Observaciones</label>
+                                                    <textarea class="form-control" name="fdescripcion" id="textareaObsGen" rows="3"></textarea>
+                                                </div>
+                                            </div> <!-- end col-->
+                                            <div class=" col-12 col-md-4">
+                                                <div class="form-group">
+                                                    <div class="form-group text-center">
+                                                        <div style="margin-bottom: 48px;"></div>
+                                                        <input type="hidden" name="idrol" value="1">
+
+                                                        <button type="submit" class="btn btn-secondary btn-lg btn-rounded waves-effect waves-light" id="sa-datos"><i class="fas fa-plus"></i> <span>Agregar ítem</span> </button>
+                                                    </div>
+                                                </div>
+                                            </div> <!-- end col-->
+                                        </div> <!-- end row impresión / descripción / botón -->
+                                    
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                                </div> <!-- end col-->
+                        </div> <!-- end row solicitador -->
+                                                <div class="row"><!-- spacer 72 -->
+                            <div class="col-12"> 
+                                <div style="margin-bottom: 72px;"></div>
+                            </div> <!-- end col-->
+                        </div> <!-- end row-->
+
+                        <div class="row"> <!-- Tabla pedido genérico -->
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                            <div class="table-responsive">
+                                                <h5 class="mb-3 text-center">ÍTEMS DEL PEDIDO GENÉRICO</h5>
+                                                <table class="table mb-0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>#</th>
+                                                            <th>Cantidad</th>
+                                                            <th>Referencia</th>
+                                                            <th>Material</th>
+                                                            <th>Calibre</th>
+                                                            <th>Impresión</th>
+                                                            <th>Plastificado</th>
+                                                            <th>Descripción / Observaciones</th>
+                                                            <!-- <th>Editar</th> -->
+                                                            <th>Quitar</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                                                                            </tbody><tfoot>
+                                                            <tr>
+                                                                <th colspan="9"></th>
+                                                            </tr>
+                                                        
+                                                    
+                                                </tfoot></table>
+                                            </div>
+                                            <!-- fin tabla-->  
+                                    </div> <!-- end card body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div> <!-- end row tabla -->
+
+                        <div class="row"> <!-- botones borrador / hacer pedido genérico-->
+                            <div class="col-lg-4">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-12 text-center">
+                                            <a href="https://carbolsas.co/erp/APP/frm_guardaGenerico.php?tipo=borrador" class="btn btn-light btn-lg waves-effect waves-light"><i class="far fa-file"></i> Guardar como borrador</a>
+
+                                            </div>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                            
+                            <div class="col-lg-8">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row justify-content-center">
+                                            <div class="col-md-6">
+                                                <a href="https://carbolsas.co/erp/APP/frm_guardaGenerico.php?tipo=fin" class="btn btn-primary btn-lg btn-block waves-effect waves-light" id="sa-pedidogenerico-ok"><i class="fas fa-check"></i> HACER PEDIDO GENÉRICO</a>
+                                                
+                                                <!-- el ID  del bótón activa la alert. Se programa en assets/pages/sweet-alert-demojs
+                                            botón original
+                                            <button type="button" class="btn btn-primary btn-lg btn-block waves-effect waves-light" id="sa-pedidogenerico-ok"><i class="fas fa-check"></i> HACER PEDIDO GENÉRICO</button>
+                                                
+                                            -->
+                                            </div>
+                                        </div>
+                                    </div> <!-- end card-body-->
+                                </div> <!-- end card-->
+                            </div> <!-- end col-->
+                        </div> <!-- end row botones borrador / hacer pedido genérico -->
+
+                        <div class="row"><!-- spacer 72 -->
+                            <div class="col-12"> 
+                                <div style="margin-bottom: 72px;"></div>
+                            </div> <!-- end col-->
+                        </div> <!-- end row-->
+                          
+                        <div class="row"><!-- spacer 120 -->
+                            <div class="col-12"> 
+                                <div style="margin-bottom: 120px;"></div>
+                            </div> <!-- end col-->
+                        </div> <!-- end row-->
+                        
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+</form>
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="text-center text-lg-left">
+                                    2024 © Carbolsas
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-right d-none d-lg-block">
+                                    Desarrollado por Simonky
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+
+        <!-- jQuery  -->
+        <script src="NoFuncionaMenuHamburguesa_files/jquery.min.js"></script>
+        <script src="NoFuncionaMenuHamburguesa_files/bootstrap.bundle.min.js"></script>
+        <script src="NoFuncionaMenuHamburguesa_files/waves.js"></script>
+        <script src="NoFuncionaMenuHamburguesa_files/simplebar.min.js"></script>
+
+         <!-- Plugins js -->
+         <script src="NoFuncionaMenuHamburguesa_files/autoNumeric-min.js"></script>
+         <script src="NoFuncionaMenuHamburguesa_files/bootstrap-datepicker.min.js"></script>
+         <script src="NoFuncionaMenuHamburguesa_files/bootstrap-maxlength.min.js"></script>
+         <script src="NoFuncionaMenuHamburguesa_files/moment.js"></script>
+         <script src="NoFuncionaMenuHamburguesa_files/daterangepicker.js"></script>
+         <script src="NoFuncionaMenuHamburguesa_files/select2.min.js"></script>
+         <script src="NoFuncionaMenuHamburguesa_files/switchery.min.js"></script>
+         <script src="NoFuncionaMenuHamburguesa_files/bootstrap-colorpicker.min.js"></script>
+         <script src="NoFuncionaMenuHamburguesa_files/jquery.bootstrap-touchspin.min.js"></script>
+
+        <!-- Sweet Alerts Js-->
+        <script src="NoFuncionaMenuHamburguesa_files/sweetalert2.min.js"></script>
+        <!-- Sweet Alerts Js-->
+        <script src="NoFuncionaMenuHamburguesa_files/sweet-alert-demo.js"></script>
+         <!-- Custom Js -->
+        <script src="NoFuncionaMenuHamburguesa_files/advanced-plugins-demo.js"></script>
+        <!-- App js -->
+        <script src="NoFuncionaMenuHamburguesa_files/theme.js"></script>
+
+<script>
+        // Suponiendo que estadoJS contiene el valor de $estado
+        var estadoJS = ; 
+
+        // Obtener el div con id "aqui"
+        var divAqui = document.getElementById("aqui");
+
+        // Dependiendo del valor de estadoJS, actualizar el contenido del div
+        switch (estadoJS) {
+            case 1:
+                divAqui.innerHTML = '<div class="progress-bar bg-secondary" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">BORRADOR</div>';
+                break;
+            case 2:
+                divAqui.innerHTML = '<div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">PENDIENTE</div>';
+                break;
+            case 3:
+                divAqui.innerHTML = '<div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">PENDIENTE</div><div class="progress-bar bg-dark" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">EN PRODUCCIÓN [proceso]</div>';
+                break;
+            case 4:
+                divAqui.innerHTML = '<div class="progress-bar bg-info" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">PENDIENTE</div><div class="progress-bar bg-dark" role="progressbar" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100">EN PRODUCCIÓN [proceso]</div><div class="progress-bar bg-danger" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">EN DESPACHO</div>';
+                break;
+            case 5:
+                divAqui.innerHTML = '<div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">ENTREGADO A ALMACÉN</div>';
+                break;
+            default:
+                divAqui.innerHTML = '';
+        }
+    </script>
+    
+
+
+
+</body></html>

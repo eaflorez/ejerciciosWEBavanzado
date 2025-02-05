@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <title>Sistema de Pedidosindex.php</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+        <meta content="Sistema de Pedidos - CARBOLSAS" name="description">
+        <meta content="MyraStudio" name="author">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="https://carbolsas.co/ventas/carbolsas/app/assets/images/favicon.ico">
+
+
+		<!-- Sweet Alerts css -->
+        <link href="siFuncionaMenuHamburguesa_files/sweetalert2.min.css" rel="stylesheet" type="text/css">
+
+        <!-- App css -->
+        <link href="siFuncionaMenuHamburguesa_files/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link href="siFuncionaMenuHamburguesa_files/theme.min.css" rel="stylesheet" type="text/css">
+		
+		<style>
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+            appearance: textfield;
+            border: none;
+            outline: none;
+            background: none;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+
+    </head>
+
+    <body>
+
+        <!-- Begin page -->
+        <div id="layout-wrapper">
+
+            <div class="main-content">
+
+                <header id="page-topbar">
+                    <div class="navbar-header">
+                        <!-- LOGO -->
+                        <div class="navbar-brand-box d-flex align-items-left">
+						<button type="button" class="btn btn-sm mr-2 font-size-16 d-lg-none header-item waves-effect waves-light" data-toggle="collapse" data-target="#topnav-menu-content">
+                                <i class="fa fa-fw fa-bars"></i>
+								 </button>
+                            <div class="logo">
+                                <span>
+								<a href="https://carbolsas.co/ventas/carbolsas/app/index.php" class="logo">
+                                    <i class="fas fa-shopping-bag"></i> <b>Pedidos</b>
+                                </a>
+								</span>
+								</div>
+                            <div class="logo btn btn-sm mr-2 font-size-16 d-lg-none header-item">
+							<a href="https://carbolsas.co/ventas/carbolsas/app/index.php" class="logo">
+                                <i class="fas fa-shopping-bag"></i> <b>Pedidos</b>
+								</a>
+                            </div>
+                        </div>
+        
+                        <div class="d-flex align-items-center">
+        
+                            <div class="dropdown d-inline-block ml-2">
+                                <button type="button" class="btn header-item noti-icon waves-effect waves-light" id="page-header-search-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="mdi mdi-magnify"></i> Producto
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0" aria-labelledby="page-header-search-dropdown">
+                                    
+                                     <form class="p-3" action="frm_consulta.php" method="post" name="busquedarapida" id="refbus-form">
+										<div class="form-group m-0">
+                                            <div class="input-group">
+                                                <input type="text" id="refbus-input" class="form-control" name="refbus" placeholder="Ingresa la referencia del producto" aria-label="Recipient's username">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="submit"><i class="mdi mdi-magnify"></i></button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div><div class="dropdown d-inline-block ml-2">
+                                <button type="button" class="btn header-item waves-effect waves-light" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img class="rounded-circle header-profile-user" src="siFuncionaMenuHamburguesa_files/unnamed.png" alt="usuario">
+
+                                    <span class="d-none d-sm-inline-block ml-1">Edwinsadm</span>
+                                    <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a class="dropdown-item d-flex align-items-center justify-content-between" href="https://carbolsas.co/ventas/carbolsas/app/logout.php">
+                                        <span>Cerrar Sesión <i class="fas fa-sign-out-alt"></i></span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </header> 
+		
+		
+			<div class="topnav">
+                    <div class="container-fluid">
+                        <nav class="navbar navbar-light navbar-expand-lg topnav-menu active">
+                            
+                            <div class="collapse navbar-collapse" id="topnav-menu-content">
+                                <ul class="navbar-nav active">
+                                    <li class="nav-item active">
+                                        <a class="nav-link active" href="https://carbolsas.co/ventas/carbolsas/app/index.php">
+                                            <i class="feather-box mr-2"></i>Hacer Pedido
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://carbolsas.co/ventas/carbolsas/admin/cb_admin_validar.php">
+                                            <i class="feather-check-square mr-2"></i>Validar
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://carbolsas.co/ventas/carbolsas/admin/cb_admin_bodega.php">
+                                            <i class="feather-package mr-2"></i>Despachar
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://carbolsas.co/ventas/carbolsas/admin/cb_admin_facturar.php">
+                                            <i class="feather-file mr-2"></i>Facturar
+                                        </a>
+                                    </li>
+									
+									<li class="nav-item">
+                                        <a class="nav-link" href="https://carbolsas.co/ventas/carbolsas/admin/cb_admin_caja.php">
+                                            <i class="feather-dollar-sign mr-2"></i>Caja
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://carbolsas.co/ventas/carbolsas/admin/cb_admin_trazabilidad.php">
+                                            <i class="feather-eye mr-2"></i>Trazabilidad
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://carbolsas.co/ventas/carbolsas/admin/upd_refs.php" onclick="return confirm('Esto podría tardar ¿Desea continuar?');">
+                                            <i class="feather-alert-triangle mr-2"></i>Actualizar Referencias
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://carbolsas.co/ventas/carbolsas/admin/cb_admin_anulados.php">
+                                            <i class="feather-archive mr-2"></i>Ver Anulados
+                                        </a>
+                                    </li>
+
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="https://carbolsas.co/ventas/carbolsas/admin/cb_admin_dash.php">
+                                            <i class="feather-pie-chart mr-2"></i>Dashboard
+                                        </a>
+                                    </li>
+                                
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div> 
+			 
+				
+
+                <div class="page-content">
+                    <div class="container-fluid">
+
+                        <!-- start page title -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="page-title-box d-flex align-items-center justify-content-between">
+                                    <h4 class="mb-0 font-size-18">Pedidos Carbolsas</h4>
+                                </div>
+                            </div>
+                        </div>     
+                        <!-- end page title -->
+
+                        <div class="row">
+                            
+                        </div> <!-- end row-->
+						   <div class="row">
+              <div class="col-12">
+                <form action="frm_consulta.php" method="post">
+                  <div class="form-group">
+                    <label for="four-digits">Ingrese la referencia:</label>
+                    <input name="refbus" id="four-digits" type="number" min="0" max="9999" pattern="\d{4}" required="" autocomplete="off" class="form-control" placeholder="_ _ _ _" autofocus="">
+                  </div>
+                </form>
+              </div>
+            </div>
+						
+												
+						
+						
+						
+						
+                    </div> <!-- container-fluid -->
+                </div>
+                <!-- End Page-content -->
+
+                   
+		<footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="text-center text-lg-left">
+                                    2023 © Carbolsas
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-right d-none d-lg-block">
+                                    Desarrollado por Simonky
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+
+            </div>
+            <!-- end main content-->
+
+        </div>
+        <!-- END layout-wrapper -->
+
+
+        <!-- jQuery  -->
+        <script src="siFuncionaMenuHamburguesa_files/jquery.min.js"></script>
+        <script src="siFuncionaMenuHamburguesa_files/bootstrap.bundle.min.js"></script>
+        <script src="siFuncionaMenuHamburguesa_files/auth-404.html"></script>
+        <script src="siFuncionaMenuHamburguesa_files/waves.js"></script>
+        <script src="siFuncionaMenuHamburguesa_files/simplebar.min.js"></script>
+
+         <!-- Plugins js -->
+         <script src="siFuncionaMenuHamburguesa_files/autoNumeric-min.js"></script>
+         <script src="siFuncionaMenuHamburguesa_files/bootstrap-datepicker.min.js"></script>
+         <script src="siFuncionaMenuHamburguesa_files/bootstrap-maxlength.min.js"></script>
+         <script src="siFuncionaMenuHamburguesa_files/moment.js"></script>
+         <script src="siFuncionaMenuHamburguesa_files/daterangepicker.js"></script>
+         <script src="siFuncionaMenuHamburguesa_files/select2.min.js"></script>
+         <script src="siFuncionaMenuHamburguesa_files/switchery.min.js"></script>
+         <script src="siFuncionaMenuHamburguesa_files/bootstrap-colorpicker.min.js"></script>
+         <script src="siFuncionaMenuHamburguesa_files/jquery.bootstrap-touchspin.min.js"></script>
+
+         <!-- Custom Js -->
+         <script src="siFuncionaMenuHamburguesa_files/advanced-plugins-demo.js"></script>
+
+        <!-- Sweet Alerts Js-->
+        <script src="siFuncionaMenuHamburguesa_files/sweetalert2.min.js"></script>
+    
+        <!-- Sweet Alerts Js-->
+        <script src="siFuncionaMenuHamburguesa_files/sweet-alert-demo.js"></script>
+    
+        <!-- App js -->
+        <script src="siFuncionaMenuHamburguesa_files/theme.js"></script>
+			
+
+<script>
+      const input = document.getElementById("four-digits");
+      input.addEventListener("input", function (event) {
+        if (this.value.length === 4) {
+          this.form.submit();
+        }
+      });
+    </script>
+
+
+      
+	
+		
+		
+
+</body></html>
